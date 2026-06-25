@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#1b2433;background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  :root{--accent:#2f6db0;--navy:#16304e;--navy2:#1c3a5e;--ink:#1b2433;--muted:#5d6b7e;--line:#e3e9f0;--tint:#f3f6fa;}
+  a{color:inherit;text-decoration:none;}
+  @keyframes dnitUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</helmet>
+
+<div style="--accent: {{ accentVar }}; max-width:100%; overflow-x:hidden;">
+
+  <!-- ===== HEADER ===== -->
+  <header style="position:sticky; top:0; z-index:50; background:rgba(255,255,255,0.94); backdrop-filter:saturate(140%) blur(8px); border-bottom:1px solid var(--line); box-shadow: {{ navShadow }};">
+    <div style="max-width:1200px; margin:0 auto; padding:12px 24px; min-height:74px; display:flex; align-items:center; gap:18px;">
+      <a href="#top" style="display:flex; align-items:center; gap:13px; flex:none;">
+        <span style="width:42px; height:42px; flex:none; border-radius:8px; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:0.04em;">ДН<span style="color:var(--accent);">иТ</span></span>
+        <span style="display:flex; flex-direction:column; line-height:1.05;">
+          <span style="font-weight:700; font-size:16px; letter-spacing:-0.01em; color:var(--navy);">Дом науки и&nbsp;техники</span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.14em; color:var(--muted); text-transform:uppercase;">ЧОУ ДПО «ДНИТ» · Волгоград</span>
+        </span>
+      </a>
+      <nav style="margin-left:auto; display:flex; align-items:center; gap:20px; flex-wrap:wrap; justify-content:flex-end; min-width:0;">
+        <a href="#uslugi" style="font-size:14px; font-weight:500; color:#33414f; white-space:nowrap;">Услуги</a>
+        <a href="#preimushchestva" style="font-size:14px; font-weight:500; color:#33414f; white-space:nowrap;">Преимущества</a>
+        <a href="#o-kompanii" style="font-size:14px; font-weight:500; color:#33414f; white-space:nowrap;">О компании</a>
+        <a href="#litsenzii" style="font-size:14px; font-weight:500; color:#33414f; white-space:nowrap;">Лицензии</a>
+        <a href="#kontakty" style="font-size:14px; font-weight:500; color:#33414f; white-space:nowrap;">Контакты</a>
+      </nav>
+      <a href="tel:+78442527021" style="display:flex; flex-direction:column; align-items:flex-end; line-height:1.1; flex:none;">
+        <span style="font-weight:700; font-size:16px; color:var(--navy); letter-spacing:0.01em;">+7 (8442) 52-70-21</span>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:0.1em; color:var(--muted); text-transform:uppercase;">Пн–Пт · 08:30–17:30</span>
+      </a>
+      <a href="#zayavka" style="flex:none; background:var(--accent); color:#fff; font-weight:600; font-size:14px; padding:11px 20px; border-radius:8px;">Оставить заявку</a>
+    </div>
+  </header>
+
+  <div id="top"></div>
+
+  <!-- ===== HERO A ===== -->
+  <sc-if value="{{ heroA }}" hint-placeholder-val="{{ true }}">
+  <section style="background:var(--navy); color:#fff; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px); background-size:46px 46px; opacity:0.7;"></div>
+    <div style="max-width:1200px; margin:0 auto; padding:0 32px; position:relative; display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center; min-height:580px;">
+      <div style="padding:80px 0; animation:dnitUp 0.6s ease both;">
+        <div style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#a9c4e2; border:1px solid rgba(255,255,255,0.16); padding:7px 14px; border-radius:100px; margin-bottom:30px;">
+          <span style="width:7px; height:7px; border-radius:50%; background:var(--accent); display:inline-block;"></span>
+          Образовательная деятельность с 2007 года
+        </div>
+        <h1 style="font-size:54px; line-height:1.06; font-weight:700; letter-spacing:-0.025em; margin:0 0 22px; text-wrap:balance;">Обучение, СОУТ<br>и охрана труда<br>в Волгограде</h1>
+        <p style="font-size:18px; line-height:1.6; color:#c5d4e6; max-width:480px; margin:0 0 36px;">Дом науки и техники проводит дополнительное профессиональное образование, специальную оценку условий труда и экологический контроль — с собственной аккредитованной лабораторией.</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#zayavka" style="background:var(--accent); color:#fff; font-weight:600; font-size:15.5px; padding:15px 28px; border-radius:9px;">Получить консультацию</a>
+          <a href="#uslugi" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#fff; font-weight:600; font-size:15.5px; padding:15px 28px; border-radius:9px;">Наши услуги</a>
+        </div>
+      </div>
+      <div style="padding:46px 0;">
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.13); border-radius:16px; padding:30px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:#8fb0d4; margin-bottom:20px;">Коротко о нас</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,0.1); border-radius:12px; overflow:hidden;">
+            <div style="background:var(--navy); padding:22px 20px;"><div style="font-size:34px; font-weight:700; letter-spacing:-0.02em;">19<span style="color:var(--accent);"> лет</span></div><div style="font-size:13px; color:#aebfd2; margin-top:4px;">на рынке услуг</div></div>
+            <div style="background:var(--navy); padding:22px 20px;"><div style="font-size:34px; font-weight:700; letter-spacing:-0.02em;">200<span style="color:var(--accent);">+</span></div><div style="font-size:13px; color:#aebfd2; margin-top:4px;">программ обучения</div></div>
+            <div style="background:var(--navy); padding:22px 20px;"><div style="font-size:34px; font-weight:700; letter-spacing:-0.02em;">РФ</div><div style="font-size:13px; color:#aebfd2; margin-top:4px;">СОУТ по всей стране</div></div>
+            <div style="background:var(--navy); padding:22px 20px;"><div style="font-size:34px; font-weight:700; letter-spacing:-0.02em;">1<span style="color:var(--accent);"> лаб.</span></div><div style="font-size:13px; color:#aebfd2; margin-top:4px;">химико-аналитическая</div></div>
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:18px; padding-top:18px; border-top:1px solid rgba(255,255,255,0.12); font-size:13px; color:#c5d4e6;">
+            <span style="width:9px; height:9px; border-radius:50%; background:#5bb98c; flex:none;"></span>
+            Лицензия на образовательную деятельность · аккредитация лаборатории
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ===== HERO B ===== -->
+  <sc-if value="{{ heroB }}" hint-placeholder-val="{{ true }}">
+  <section style="background:var(--navy); color:#fff; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background-image:radial-gradient(circle at 80% 20%, rgba(47,109,176,0.35), transparent 55%); "></div>
+    <div style="position:absolute; inset:0; background-image:linear-gradient(rgba(255,255,255,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.045) 1px,transparent 1px); background-size:54px 54px;"></div>
+    <div style="max-width:1000px; margin:0 auto; padding:96px 32px 84px; position:relative; text-align:center; animation:dnitUp 0.6s ease both;">
+      <div style="display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#a9c4e2; border:1px solid rgba(255,255,255,0.16); padding:7px 16px; border-radius:100px; margin-bottom:30px;">
+        ЧОУ ДПО «ДНИТ» · Волгоград · с 2007
+      </div>
+      <h1 style="font-size:60px; line-height:1.05; font-weight:700; letter-spacing:-0.03em; margin:0 auto 24px; max-width:880px; text-wrap:balance;">Центр обучения, <span style="color:var(--accent);">СОУТ</span> и охраны труда</h1>
+      <p style="font-size:19px; line-height:1.6; color:#c5d4e6; max-width:600px; margin:0 auto 38px;">Дополнительное профессиональное образование, специальная оценка условий труда, экологический контроль и собственная аккредитованная лаборатория.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:54px;">
+        <a href="#zayavka" style="background:var(--accent); color:#fff; font-weight:600; font-size:15.5px; padding:15px 30px; border-radius:9px;">Оставить заявку</a>
+        <a href="#uslugi" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); color:#fff; font-weight:600; font-size:15.5px; padding:15px 30px; border-radius:9px;">Услуги</a>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12); border-radius:14px; overflow:hidden; max-width:760px; margin:0 auto;">
+        <div style="background:var(--navy); padding:24px 16px;"><div style="font-size:32px; font-weight:700;">2007</div><div style="font-size:12.5px; color:#aebfd2; margin-top:4px;">год основания</div></div>
+        <div style="background:var(--navy); padding:24px 16px;"><div style="font-size:32px; font-weight:700;">200<span style="color:var(--accent);">+</span></div><div style="font-size:12.5px; color:#aebfd2; margin-top:4px;">программ</div></div>
+        <div style="background:var(--navy); padding:24px 16px;"><div style="font-size:32px; font-weight:700;">РФ</div><div style="font-size:12.5px; color:#aebfd2; margin-top:4px;">СОУТ по стране</div></div>
+        <div style="background:var(--navy); padding:24px 16px;"><div style="font-size:32px; font-weight:700;">100%</div><div style="font-size:12.5px; color:#aebfd2; margin-top:4px;">гарантия услуг</div></div>
+      </div>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ===== TRUST STRIP ===== -->
+  <section style="background:var(--tint); border-bottom:1px solid var(--line);">
+    <div style="max-width:1200px; margin:0 auto; padding:22px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:11px; font-size:14.5px; color:#33414f;"><span style="color:var(--accent); font-weight:700;">✓</span> Лицензия на образовательную деятельность</div>
+      <div style="display:flex; align-items:center; gap:11px; font-size:14.5px; color:#33414f;"><span style="color:var(--accent); font-weight:700;">✓</span> Аккредитованная испытательная лаборатория</div>
+      <div style="display:flex; align-items:center; gap:11px; font-size:14.5px; color:#33414f;"><span style="color:var(--accent); font-weight:700;">✓</span> В реестре организаций, проводящих СОУТ</div>
+      <div style="display:flex; align-items:center; gap:11px; font-size:14.5px; color:#33414f;"><span style="color:var(--accent); font-weight:700;">✓</span> Рассрочка и отсрочка платежа</div>
+    </div>
+  </section>
+
+  <!-- ===== УСЛУГИ ===== -->
+  <section id="uslugi" style="max-width:1200px; margin:0 auto; padding:88px 32px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:46px; flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">01 — Направления</div>
+        <h2 style="font-size:40px; font-weight:700; letter-spacing:-0.025em; margin:0; color:var(--navy);">Услуги</h2>
+      </div>
+      <p style="font-size:16px; color:var(--muted); max-width:420px; margin:0;">Полный цикл услуг по обучению, охране труда, оценке условий труда и экологии для предприятий любого масштаба.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px;">
+
+      <div style="border:1px solid var(--line); border-radius:14px; padding:30px; background:#fff; transition:box-shadow .2s, transform .2s, border-color .2s;" style-hover="border-color:var(--accent); box-shadow:0 18px 40px -22px rgba(22,48,78,0.4); transform:translateY(-3px);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px;">
+          <span style="width:50px; height:50px; border-radius:11px; background:var(--tint); color:var(--accent); display:flex; align-items:center; justify-content:center;"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 8 L13 3 L23 8 L13 13 Z"/><path d="M7 10.5 V16 C7 16 9.5 18 13 18 C16.5 18 19 16 19 16 V10.5"/></svg></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#aab6c4;">01</span>
+        </div>
+        <h3 style="font-size:19px; font-weight:600; margin:0 0 10px; color:var(--navy);">Дополнительное профессиональное образование</h3>
+        <p style="font-size:14.5px; line-height:1.6; color:var(--muted); margin:0;">Первичное обучение и переподготовка по более чем 200 программам, в том числе дистанционно.</p>
+      </div>
+
+      <div style="border:1px solid var(--line); border-radius:14px; padding:30px; background:#fff; transition:box-shadow .2s, transform .2s, border-color .2s;" style-hover="border-color:var(--accent); box-shadow:0 18px 40px -22px rgba(22,48,78,0.4); transform:translateY(-3px);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px;">
+          <span style="width:50px; height:50px; border-radius:11px; background:var(--tint); color:var(--accent); display:flex; align-items:center; justify-content:center;"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M13 3 L21 6 V12 C21 17 17.5 21 13 23 C8.5 21 5 17 5 12 V6 Z"/><path d="M9.5 13 L12 15.5 L16.5 10"/></svg></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#aab6c4;">02</span>
+        </div>
+        <h3 style="font-size:19px; font-weight:600; margin:0 0 10px; color:var(--navy);">Специальная оценка условий труда (СОУТ)</h3>
+        <p style="font-size:14.5px; line-height:1.6; color:var(--muted); margin:0;">Проведение СОУТ на всей территории России. Гарантированно избавит от штрафов надзорных органов.</p>
+      </div>
+
+      <div style="border:1px solid var(--line); border-radius:14px; padding:30px; background:#fff; transition:box-shadow .2s, transform .2s, border-color .2s;" style-hover="border-color:var(--accent); box-shadow:0 18px 40px -22px rgba(22,48,78,0.4); transform:translateY(-3px);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px;">
+          <span style="width:50px; height:50px; border-radius:11px; background:var(--tint); color:var(--accent); display:flex; align-items:center; justify-content:center;"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="13" cy="9" r="4"/><path d="M5 22 C5 17.5 8.5 15 13 15 C17.5 15 21 17.5 21 22"/></svg></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#aab6c4;">03</span>
+        </div>
+        <h3 style="font-size:19px; font-weight:600; margin:0 0 10px; color:var(--navy);">Аутсорсинг охраны труда</h3>
+        <p style="font-size:14.5px; line-height:1.6; color:var(--muted); margin:0;">Ведение охраны труда под ключ силами наших специалистов — без расширения штата предприятия.</p>
+      </div>
+
+      <div style="border:1px solid var(--line); border-radius:14px; padding:30px; background:#fff; transition:box-shadow .2s, transform .2s, border-color .2s;" style-hover="border-color:var(--accent); box-shadow:0 18px 40px -22px rgba(22,48,78,0.4); transform:translateY(-3px);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px;">
+          <span style="width:50px; height:50px; border-radius:11px; background:var(--tint); color:var(--accent); display:flex; align-items:center; justify-content:center;"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 3 V10 L5 20 C4.3 21.5 5 23 6.7 23 H19.3 C21 23 21.7 21.5 21 20 L16 10 V3"/><path d="M8.5 3 H17.5"/><path d="M7.5 16 H18.5"/></svg></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#aab6c4;">04</span>
+        </div>
+        <h3 style="font-size:19px; font-weight:600; margin:0 0 10px; color:var(--navy);">Производственный экологический контроль</h3>
+        <p style="font-size:14.5px; line-height:1.6; color:var(--muted); margin:0;">Аккредитованная лаборатория проводит работы по ПЭК и экологическому проектированию.</p>
+      </div>
+
+      <div style="border:1px solid var(--line); border-radius:14px; padding:30px; background:#fff; transition:box-shadow .2s, transform .2s, border-color .2s;" style-hover="border-color:var(--accent); box-shadow:0 18px 40px -22px rgba(22,48,78,0.4); transform:translateY(-3px);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px;">
+          <span style="width:50px; height:50px; border-radius:11px; background:var(--tint); color:var(--accent); display:flex; align-items:center; justify-content:center;"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 22 L13 5 L22 22 Z"/><path d="M9 17 H17"/><circle cx="13" cy="13" r="0.6" fill="currentColor"/></svg></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#aab6c4;">05</span>
+        </div>
+        <h3 style="font-size:19px; font-weight:600; margin:0 0 10px; color:var(--navy);">Оценка профессиональных рисков</h3>
+        <p style="font-size:14.5px; line-height:1.6; color:var(--muted); margin:0;">Выявление, анализ и снижение профессиональных рисков на рабочих местах в соответствии с ТК РФ.</p>
+      </div>
+
+      <div style="border:1px solid var(--line); border-radius:14px; padding:30px; background:#fff; transition:box-shadow .2s, transform .2s, border-color .2s;" style-hover="border-color:var(--accent); box-shadow:0 18px 40px -22px rgba(22,48,78,0.4); transform:translateY(-3px);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px;">
+          <span style="width:50px; height:50px; border-radius:11px; background:var(--tint); color:var(--accent); display:flex; align-items:center; justify-content:center;"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M11 3 V9 L6 19 C5.3 20.4 6 22 7.6 22 H18.4 C20 22 20.7 20.4 20 19 L15 9 V3"/><path d="M9.5 3 H16.5"/><circle cx="13" cy="17" r="1.4"/></svg></span>
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#aab6c4;">06</span>
+        </div>
+        <h3 style="font-size:19px; font-weight:600; margin:0 0 10px; color:var(--navy);">Лабораторные исследования</h3>
+        <p style="font-size:14.5px; line-height:1.6; color:var(--muted); margin:0;">Исследования почвы и среды для строительства и инженерных изысканий, поверка средств измерения.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== ПРЕИМУЩЕСТВА ===== -->
+  <section id="preimushchestva" style="background:var(--navy); color:#fff;">
+    <div style="max-width:1200px; margin:0 auto; padding:88px 32px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#8fb0d4; margin-bottom:14px;">02 — Почему мы</div>
+      <h2 style="font-size:40px; font-weight:700; letter-spacing:-0.025em; margin:0 0 46px;">Преимущества</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12); border-radius:16px; overflow:hidden;">
+        <div style="background:var(--navy); padding:34px 30px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">— 01</div><h3 style="font-size:19px; font-weight:600; margin:0 0 9px;">С 2007 года</h3><p style="font-size:14.5px; line-height:1.6; color:#aebfd2; margin:0;">Ведём образовательную деятельность 19 лет — опыт и репутация подтверждены временем.</p></div>
+        <div style="background:var(--navy); padding:34px 30px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">— 02</div><h3 style="font-size:19px; font-weight:600; margin:0 0 9px;">Гарантия на услуги</h3><p style="font-size:14.5px; line-height:1.6; color:#aebfd2; margin:0;">Предоставляем гарантию на все виды оказываемых услуг и сопровождаем при проверках.</p></div>
+        <div style="background:var(--navy); padding:34px 30px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">— 03</div><h3 style="font-size:19px; font-weight:600; margin:0 0 9px;">200+ программ</h3><p style="font-size:14.5px; line-height:1.6; color:#aebfd2; margin:0;">Более 200 программ подготовки, включая возможность полностью дистанционного обучения.</p></div>
+        <div style="background:var(--navy); padding:34px 30px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">— 04</div><h3 style="font-size:19px; font-weight:600; margin:0 0 9px;">СОУТ по всей России</h3><p style="font-size:14.5px; line-height:1.6; color:#aebfd2; margin:0;">Проводим специальную оценку условий труда и оценку рисков на всей территории страны.</p></div>
+        <div style="background:var(--navy); padding:34px 30px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">— 05</div><h3 style="font-size:19px; font-weight:600; margin:0 0 9px;">Собственная лаборатория</h3><p style="font-size:14.5px; line-height:1.6; color:#aebfd2; margin:0;">Аккредитованная химико-аналитическая лаборатория для измерений и контроля.</p></div>
+        <div style="background:var(--navy); padding:34px 30px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent); margin-bottom:14px;">— 06</div><h3 style="font-size:19px; font-weight:600; margin:0 0 9px;">Рассрочка платежа</h3><p style="font-size:14.5px; line-height:1.6; color:#aebfd2; margin:0;">Возможность рассрочки и отсрочки платежа — удобные условия для предприятий.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== О КОМПАНИИ ===== -->
+  <section id="o-kompanii" style="max-width:1200px; margin:0 auto; padding:88px 32px; display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+    <div>
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">03 — О компании</div>
+      <h2 style="font-size:40px; font-weight:700; letter-spacing:-0.025em; margin:0 0 22px; color:var(--navy);">Дом науки<br>и техники</h2>
+      <p style="font-size:16.5px; line-height:1.7; color:#3a4757; margin:0 0 18px;">ЧОУ ДПО «ДНИТ» — частное образовательное учреждение дополнительного профессионального образования, основанное в Волгограде в 2007 году. Мы объединяем учебный центр, экспертизу по охране труда и аккредитованную лабораторию.</p>
+      <p style="font-size:16.5px; line-height:1.7; color:#3a4757; margin:0 0 30px;">За годы работы разработано более 200 программ подготовки, реализованы тысячи проектов по СОУТ, оценке рисков и экологическому контролю для предприятий региона и всей страны.</p>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; border-top:1px solid var(--line); padding-top:28px;">
+        <div><div style="font-size:34px; font-weight:700; color:var(--navy); letter-spacing:-0.02em;">2007</div><div style="font-size:13px; color:var(--muted); margin-top:4px;">год основания</div></div>
+        <div><div style="font-size:34px; font-weight:700; color:var(--navy); letter-spacing:-0.02em;">200+</div><div style="font-size:13px; color:var(--muted); margin-top:4px;">учебных программ</div></div>
+        <div><div style="font-size:34px; font-weight:700; color:var(--navy); letter-spacing:-0.02em;">19</div><div style="font-size:13px; color:var(--muted); margin-top:4px;">лет опыта</div></div>
+      </div>
+    </div>
+    <div style="aspect-ratio:4/3; border-radius:16px; border:1px solid var(--line); background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 11px,#f6f9fc 11px,#f6f9fc 22px); position:relative; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center;">
+        <div style="width:60px; height:60px; border-radius:14px; background:var(--navy); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-family:'IBM Plex Mono',monospace; font-weight:600;">ДНиТ</div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.12em; color:#7d8b9b; text-transform:uppercase;">фото · учебный центр / лаборатория</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ЛИЦЕНЗИИ ===== -->
+  <section id="litsenzii" style="background:var(--tint); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div style="max-width:1200px; margin:0 auto; padding:80px 32px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">04 — Документы</div>
+      <h2 style="font-size:40px; font-weight:700; letter-spacing:-0.025em; margin:0 0 12px; color:var(--navy);">Лицензии и аккредитации</h2>
+      <p style="font-size:16px; color:var(--muted); margin:0 0 42px; max-width:560px;">Деятельность ЧОУ ДПО «ДНИТ» подтверждена государственными лицензиями и аттестатами аккредитации.</p>
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px;">
+        <div style="background:#fff; border:1px solid var(--line); border-radius:13px; padding:22px;">
+          <div style="aspect-ratio:3/4; border-radius:8px; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 9px,#f7fafc 9px,#f7fafc 18px); border:1px solid var(--line); margin-bottom:16px; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#9aa7b5; text-align:center; padding:10px;">скан<br>документа</div>
+          <h3 style="font-size:15px; font-weight:600; margin:0 0 5px; color:var(--navy);">Лицензия на образовательную деятельность</h3>
+          <p style="font-size:13px; color:var(--muted); margin:0;">Министерство образования</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--line); border-radius:13px; padding:22px;">
+          <div style="aspect-ratio:3/4; border-radius:8px; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 9px,#f7fafc 9px,#f7fafc 18px); border:1px solid var(--line); margin-bottom:16px; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#9aa7b5; text-align:center; padding:10px;">скан<br>документа</div>
+          <h3 style="font-size:15px; font-weight:600; margin:0 0 5px; color:var(--navy);">Аттестат аккредитации лаборатории</h3>
+          <p style="font-size:13px; color:var(--muted); margin:0;">Испытательная лаборатория</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--line); border-radius:13px; padding:22px;">
+          <div style="aspect-ratio:3/4; border-radius:8px; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 9px,#f7fafc 9px,#f7fafc 18px); border:1px solid var(--line); margin-bottom:16px; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#9aa7b5; text-align:center; padding:10px;">скан<br>документа</div>
+          <h3 style="font-size:15px; font-weight:600; margin:0 0 5px; color:var(--navy);">Реестр организаций СОУТ</h3>
+          <p style="font-size:13px; color:var(--muted); margin:0;">Минтруд России</p>
+        </div>
+        <div style="background:#fff; border:1px solid var(--line); border-radius:13px; padding:22px;">
+          <div style="aspect-ratio:3/4; border-radius:8px; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 9px,#f7fafc 9px,#f7fafc 18px); border:1px solid var(--line); margin-bottom:16px; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:#9aa7b5; text-align:center; padding:10px;">скан<br>документа</div>
+          <h3 style="font-size:15px; font-weight:600; margin:0 0 5px; color:var(--navy);">Свидетельство о поверке</h3>
+          <p style="font-size:13px; color:var(--muted); margin:0;">Средства измерения</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== НОВОСТИ ===== -->
+  <sc-if value="{{ showNews }}" hint-placeholder-val="{{ true }}">
+  <section id="novosti" style="max-width:1200px; margin:0 auto; padding:88px 32px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:42px; flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">05 — Новости</div>
+        <h2 style="font-size:40px; font-weight:700; letter-spacing:-0.025em; margin:0; color:var(--navy);">Новости и события</h2>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+      <a href="#" style="display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; transition:box-shadow .2s, transform .2s;" style-hover="box-shadow:0 18px 40px -22px rgba(22,48,78,0.35); transform:translateY(-3px);">
+        <div style="aspect-ratio:16/9; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 10px,#f6f9fc 10px,#f6f9fc 20px); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#9aa7b5;">изображение</div>
+        <div style="padding:24px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); margin-bottom:10px;">27.04.2026</div>
+          <h3 style="font-size:17px; font-weight:600; line-height:1.35; margin:0; color:var(--navy);">Всемирный день охраны труда</h3>
+        </div>
+      </a>
+      <a href="#" style="display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; transition:box-shadow .2s, transform .2s;" style-hover="box-shadow:0 18px 40px -22px rgba(22,48,78,0.35); transform:translateY(-3px);">
+        <div style="aspect-ratio:16/9; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 10px,#f6f9fc 10px,#f6f9fc 20px); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#9aa7b5;">изображение</div>
+        <div style="padding:24px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); margin-bottom:10px;">12.03.2026</div>
+          <h3 style="font-size:17px; font-weight:600; line-height:1.35; margin:0; color:var(--navy);">Новые программы дистанционного обучения 2026</h3>
+        </div>
+      </a>
+      <a href="#" style="display:block; border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fff; transition:box-shadow .2s, transform .2s;" style-hover="box-shadow:0 18px 40px -22px rgba(22,48,78,0.35); transform:translateY(-3px);">
+        <div style="aspect-ratio:16/9; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 10px,#f6f9fc 10px,#f6f9fc 20px); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#9aa7b5;">изображение</div>
+        <div style="padding:24px;">
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); margin-bottom:10px;">28.01.2026</div>
+          <h3 style="font-size:17px; font-weight:600; line-height:1.35; margin:0; color:var(--navy);">Плановые проверки ГИТ: к чему готовиться</h3>
+        </div>
+      </a>
+    </div>
+  </section>
+  </sc-if>
+
+  <!-- ===== ЗАЯВКА ===== -->
+  <section id="zayavka" style="background:var(--navy); color:#fff;">
+    <div style="max-width:1200px; margin:0 auto; padding:88px 32px; display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:#8fb0d4; margin-bottom:14px;">06 — Заявка</div>
+        <h2 style="font-size:38px; font-weight:700; letter-spacing:-0.025em; margin:0 0 18px;">Остались вопросы?</h2>
+        <p style="font-size:16.5px; line-height:1.7; color:#c5d4e6; margin:0 0 28px;">Оставьте заявку — специалисты Дома науки и техники свяжутся с вами, подберут программу и рассчитают стоимость услуг.</p>
+        <div style="display:flex; flex-direction:column; gap:18px;">
+          <a href="tel:+78442527021" style="display:flex; align-items:center; gap:14px;"><span style="width:42px; height:42px; border-radius:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; color:var(--accent); font-weight:700;">☎</span><span><span style="display:block; font-size:17px; font-weight:600;">+7 (8442) 52-70-21</span><span style="font-size:13px; color:#aebfd2;">Пн–Пт · 08:30–17:30</span></span></a>
+          <a href="{{ mailtoHref }}" style="display:flex; align-items:center; gap:14px;"><span style="width:42px; height:42px; border-radius:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center; color:var(--accent); font-weight:700;">@</span><span><span style="display:block; font-size:17px; font-weight:600;">{{ email }}</span><span style="font-size:13px; color:#aebfd2;">Электронная почта</span></span></a>
+        </div>
+      </div>
+
+      <div style="background:#fff; border-radius:18px; padding:38px;">
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:40px 10px;">
+            <div style="width:64px; height:64px; border-radius:50%; background:#e8f5ee; color:#2f9e63; display:flex; align-items:center; justify-content:center; font-size:30px; margin:0 auto 22px;">✓</div>
+            <h3 style="font-size:23px; font-weight:700; color:var(--navy); margin:0 0 10px;">Заявка отправлена</h3>
+            <p style="font-size:15px; color:var(--muted); margin:0 0 24px; line-height:1.6;">Спасибо! Мы свяжемся с вами в ближайшее рабочее время.</p>
+            <button onClick="{{ reset }}" style="background:var(--tint); border:1px solid var(--line); color:var(--navy); font-weight:600; font-size:14px; padding:11px 22px; border-radius:9px; cursor:pointer;">Отправить ещё одну</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+          <form ref="{{ formRef }}" onSubmit="{{ onSubmit }}">
+            <h3 style="font-size:21px; font-weight:700; color:var(--navy); margin:0 0 22px;">Оставить заявку</h3>
+            <div style="display:flex; flex-direction:column; gap:15px;">
+              <label style="display:block;"><span style="display:block; font-size:13px; font-weight:500; color:#4a5764; margin-bottom:7px;">Ваше имя</span><input name="name" required placeholder="Иван Иванов" style="width:100%; border:1px solid var(--line); border-radius:9px; padding:13px 15px; font-size:15px; font-family:inherit; color:var(--ink); outline:none;" style-focus="border-color:var(--accent);"></label>
+              <label style="display:block;"><span style="display:block; font-size:13px; font-weight:500; color:#4a5764; margin-bottom:7px;">Телефон</span><input name="phone" required type="tel" placeholder="+7 (___) ___-__-__" style="width:100%; border:1px solid var(--line); border-radius:9px; padding:13px 15px; font-size:15px; font-family:inherit; color:var(--ink); outline:none;" style-focus="border-color:var(--accent);"></label>
+              <label style="display:block;"><span style="display:block; font-size:13px; font-weight:500; color:#4a5764; margin-bottom:7px;">Интересующая услуга</span>
+                <select name="service" style="width:100%; border:1px solid var(--line); border-radius:9px; padding:13px 15px; font-size:15px; font-family:inherit; color:var(--ink); outline:none; background:#fff;" style-focus="border-color:var(--accent);">
+                  <option>Обучение / ДПО</option>
+                  <option>Специальная оценка условий труда</option>
+                  <option>Аутсорсинг охраны труда</option>
+                  <option>Экологический контроль</option>
+                  <option>Оценка профессиональных рисков</option>
+                  <option>Лабораторные исследования</option>
+                  <option>Другое</option>
+                </select>
+              </label>
+              <label style="display:block;"><span style="display:block; font-size:13px; font-weight:500; color:#4a5764; margin-bottom:7px;">Комментарий</span><textarea name="message" rows="3" placeholder="Кратко опишите задачу" style="width:100%; border:1px solid var(--line); border-radius:9px; padding:13px 15px; font-size:15px; font-family:inherit; color:var(--ink); outline:none; resize:vertical;" style-focus="border-color:var(--accent);"></textarea></label>
+              <button type="submit" style="width:100%; background:var(--accent); color:#fff; font-weight:600; font-size:15.5px; padding:15px; border:none; border-radius:9px; cursor:pointer; margin-top:4px;">Отправить заявку</button>
+              <p style="font-size:11.5px; color:#9aa7b5; margin:2px 0 0; line-height:1.5; text-align:center;">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
+            </div>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== КОНТАКТЫ ===== -->
+  <section id="kontakty" style="max-width:1200px; margin:0 auto; padding:88px 32px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--accent); margin-bottom:14px;">07 — Контакты</div>
+    <h2 style="font-size:40px; font-weight:700; letter-spacing:-0.025em; margin:0 0 42px; color:var(--navy);">Как нас найти</h2>
+    <div style="display:grid; grid-template-columns:0.8fr 1.2fr; gap:40px; align-items:stretch;">
+      <div style="display:flex; flex-direction:column; gap:22px;">
+        <div style="border:1px solid var(--line); border-radius:13px; padding:24px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:9px;">Офис</div><div style="font-size:16px; font-weight:600; color:var(--navy); line-height:1.5;">г. Волгоград, пр-т им. В.И. Ленина, д. 88, офис 20</div></div>
+        <div style="border:1px solid var(--line); border-radius:13px; padding:24px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:9px;">Лаборатория</div><div style="font-size:16px; font-weight:600; color:var(--navy); line-height:1.5;">Красноармейский р-н, ул. Бахтурова, д. 10Б, 2 этаж</div></div>
+        <div style="border:1px solid var(--line); border-radius:13px; padding:24px;"><div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--muted); margin-bottom:9px;">Связь</div><a href="tel:+78442527021" style="display:block; font-size:16px; font-weight:600; color:var(--navy);">+7 (8442) 52-70-21</a><a href="{{ mailtoHref }}" style="display:block; font-size:15px; color:var(--accent); margin-top:4px;">{{ email }}</a></div>
+      </div>
+      <div style="border-radius:16px; border:1px solid var(--line); overflow:hidden; min-height:360px; background:repeating-linear-gradient(135deg,#eef2f7,#eef2f7 12px,#f6f9fc 12px,#f6f9fc 24px); position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; inset:0; background-image:linear-gradient(rgba(22,48,78,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(22,48,78,0.05) 1px,transparent 1px); background-size:40px 40px;"></div>
+        <div style="position:relative; text-align:center; background:#fff; border:1px solid var(--line); border-radius:12px; padding:22px 26px; box-shadow:0 14px 40px -22px rgba(22,48,78,0.5);">
+          <div style="width:38px; height:38px; border-radius:50%; background:var(--accent); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px;">⌖</div>
+          <div style="font-weight:600; color:var(--navy); font-size:15px;">пр-т Ленина, 88</div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#9aa7b5; text-transform:uppercase; margin-top:4px;">интерактивная карта</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer style="background:#0f2236; color:#cdd9e6;">
+    <div style="max-width:1200px; margin:0 auto; padding:54px 32px 30px;">
+      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; padding-bottom:38px; border-bottom:1px solid rgba(255,255,255,0.1);">
+        <div>
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">
+            <span style="width:40px; height:40px; border-radius:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:12px;">ДНиТ</span>
+            <span style="font-weight:700; font-size:16px; color:#fff;">Дом науки и техники</span>
+          </div>
+          <p style="font-size:13.5px; line-height:1.65; color:#8ea2b8; margin:0; max-width:320px;">Частное образовательное учреждение дополнительного профессионального образования «ДНИТ». Волгоград, с 2007 года.</p>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6f8298; margin-bottom:14px;">Разделы</div>
+          <div style="display:flex; flex-direction:column; gap:9px; font-size:14px;"><a href="#uslugi">Услуги</a><a href="#preimushchestva">Преимущества</a><a href="#o-kompanii">О компании</a><a href="#litsenzii">Лицензии</a></div>
+        </div>
+        <div>
+          <div style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6f8298; margin-bottom:14px;">Контакты</div>
+          <div style="display:flex; flex-direction:column; gap:9px; font-size:14px;"><a href="tel:+78442527021">+7 (8442) 52-70-21</a><a href="{{ mailtoHref }}">{{ email }}</a><span style="color:#8ea2b8;">пр-т Ленина, 88, оф. 20</span></div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-top:24px; font-size:12.5px; color:#6f8298; font-family:'IBM Plex Mono',monospace; letter-spacing:0.04em;">
+        <span>© 2007–2026 ЧОУ ДПО «ДНИТ». Все права защищены.</span>
+        <span>ИНН 3444143729 · ОГРН 1073400000497</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 920 },
+  &quot;heroVariant&quot;: { &quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;a&quot;, &quot;b&quot;], &quot;default&quot;: &quot;a&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#2f6db0&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;showNews&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot; }
+}">
+class Component extends DCLogic {
+  state = { sent: false, scrolled: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 8;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ sent: true });
+    try { window.scrollTo({ top: document.getElementById('zayavka').offsetTop - 80, behavior: 'smooth' }); } catch (_) {}
+  };
+  reset = () => this.setState({ sent: false });
+
+  renderVals() {
+    const variant = this.props.heroVariant ?? 'a';
+    const email = 'vdnit' + '@' + 'yandex' + '.ru';
+    return {
+      email: email,
+      mailtoHref: 'mailto:' + email,
+      accentVar: this.props.accent ?? '#2f6db0',
+      heroA: variant !== 'b',
+      heroB: variant === 'b',
+      showNews: this.props.showNews ?? true,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      navShadow: this.state.scrolled ? '0 6px 24px -16px rgba(15,34,54,0.45)' : 'none',
+      onSubmit: this.onSubmit,
+      reset: this.reset,
+      formRef: (this.formRef ||= React.createRef()),
+    };
+  }
+}
+</script>
+</body>
+</html>
