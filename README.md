@@ -1,58 +1,165 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Сайт ЧОУ ДПО «ДНИТ»
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Корпоративный сайт **Дома науки и техники** (Волгоград) — учебного центра дополнительного профессионального образования. Лендинг + раздел новостей + полностью редактируемая админ-панель: всё содержимое сайта правится из браузера, без правок кода.
 
-## About Laravel
+> **Стек:** Laravel 13 · Filament 5 · SQLite · Blade · vanilla JS (без бандлеров)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Возможности
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Публичная часть
+- **Hero-блок** в двух вариантах (текст-слева/центрирован), переключается в настройках.
+- **Услуги, преимущества, о компании, лицензии** — каждый блок управляется отдельным ресурсом в админке.
+- **Новости и события:**
+  - Слайдер на главной с прокруткой по карточкам и точками-индикаторами.
+  - Полная страница `/novosti` с пагинацией.
+  - Детальная страница `/novosti/{slug}` — заголовок, дата на русском, hero-изображение в фиксированной пропорции, форматированный текст, блок похожих материалов.
+  - Настраиваемая CTA-кнопка на детальной странице (отключаемая, любая ссылка, открытие в новой вкладке).
+- **Галерея лицензий** — клик по скану открывает лайтбокс с навигацией стрелками, ESC, счётчиком, подписью.
+- **Форма заявки** — данные летят в админку в раздел «Заявки с сайта», у новых заявок бейдж счётчика в навигации.
+- **Адаптивная вёрстка** — десктоп / планшет / мобильный.
 
-## Learning Laravel
+### Админ-панель (`/admin`)
+- Верхняя навигация, акцентный цвет берётся из настроек сайта.
+- Логотип ДНИТ + фирменный шрифт IBM Plex Sans.
+- **Глобальный поиск** по всем сущностям (⌘K / Ctrl+K) — ищет по заголовкам, описаниям, телефонам, slug'ам.
+- Прямая ссылка «Открыть сайт» в верхнем меню.
+- Бейдж непрочитанных заявок.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Структура контента
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+Каждый блок сайта — отдельная Eloquent-модель с полным CRUD в Filament:
 
-## Agentic Development
+| Раздел | Назначение |
+|---|---|
+| `SiteSetting` | Реквизиты, контакты, акцентный цвет, тексты футера, настройки CTA новости |
+| `HeroBlock` | Hero-блок (вариант A/B, заголовки, цифры) |
+| `NavLink` | Пункты главного меню (с тогглом активности) |
+| `TrustItem` | Логотипы доверия |
+| `Service` | Карточки услуг |
+| `Advantage` | Преимущества |
+| `AboutSection` | Блок «О компании» (singleton) |
+| `License` | Лицензии и аттестаты со сканами |
+| `News` | Новости (slug, дата, изображение, excerpt, body, опубликовано/нет) |
+| `ServiceOption` | Опции для селекта в форме заявки |
+| `ContactRequest` | Входящие заявки с сайта |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
+
+## Требования
+
+- **PHP 8.3+** (рекомендуется 8.4)
+- **Composer 2**
+- SQLite (встроен в PHP)
+- Опционально: GD/Imagick для обработки картинок
+
+---
+
+## Установка
 
 ```bash
-composer require laravel/boost --dev
+git clone https://github.com/USERNAME/dnit-visit.git
+cd dnit-visit
 
-php artisan boost:install
+composer install
+cp .env.example .env
+php artisan key:generate
+
+# создать БД
+type nul > database\database.sqlite          # PowerShell / cmd
+# touch database/database.sqlite             # Linux/macOS
+
+php artisan migrate --seed
+php artisan storage:link
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Положи логотип в `storage/app/public/images/logo.png` — он подтягивается в шапку сайта, футер, фавикон и брендинг админки.
 
-## Contributing
+Создай первого администратора:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+php artisan tinker --execute="\App\Models\User::create(['name'=>'Admin','email'=>'admin@dnit.local','password'=>bcrypt('admin123')]);"
+```
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Запуск
 
-## Security Vulnerabilities
+```bash
+php artisan serve --port=8000 --host=127.0.0.1
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Сайт: <http://127.0.0.1:8000/>
+- Админка: <http://127.0.0.1:8000/admin>
 
-## License
+> **Windows / OSPanel:** в проекте используется PHP 8.4 (`C:\OSPanel\modules\PHP-8.4\php.exe`). Если порт 8000 занят зависшим процессом — `Get-NetTCPConnection -LocalPort 8000` и `Stop-Process` по PID.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Структура проекта
+
+```
+app/
+├── Filament/
+│   ├── Pages/              # Singleton-страницы: Hero, О компании, Настройки
+│   └── Resources/          # CRUD по одному на сущность контента
+├── Http/Controllers/
+│   └── SiteController.php  # home / news.index / news.show / contact.store
+├── Models/                 # Eloquent: News, Service, License, ...
+└── Providers/Filament/
+    └── AdminPanelProvider.php
+
+resources/views/
+├── components/
+│   └── site-layout.blade.php   # общая обёртка фронта (хедер/футер/шрифты/CSS)
+├── site/
+│   ├── home.blade.php          # главная
+│   ├── news-index.blade.php    # /novosti
+│   ├── news-show.blade.php     # /novosti/{slug}
+│   └── partials/               # переиспользуемые блоки секций
+└── filament/
+    └── brand-logo.blade.php    # логотип админки
+
+routes/web.php                  # 4 публичных маршрута
+database/migrations/            # схема + добавочные миграции для CTA и nav toggle
+```
+
+---
+
+## Часто настраиваемое
+
+| Что | Где |
+|---|---|
+| Акцентный цвет (на сайте и в админке) | Админ → Сайт → Настройки сайта → Акцентный цвет |
+| Вариант hero-блока (A/B) | Там же → Вариант hero-блока |
+| Меню навигации | Админ → Сайт → Пункты меню (с порядком и тогглом «Показывать») |
+| Кнопка на странице новости | Настройки сайта → секция «Кнопка на странице новости» |
+| Показ блока новостей на главной | Настройки сайта → «Показывать блок новостей» |
+| Логотип | `storage/app/public/images/logo.png` |
+
+---
+
+## Деплой
+
+Стандартный деплой Laravel:
+
+```bash
+git pull
+composer install --no-dev --optimize-autoloader
+php artisan migrate --force
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan storage:link
+```
+
+Веб-сервер указывает в `public/` — `.htaccess` уже на месте для Apache, для nginx — стандартный `try_files $uri $uri/ /index.php?$query_string`.
+
+---
+
+## Лицензия
+
+Внутренний проект ЧОУ ДПО «ДНИТ». Laravel и Filament — MIT.
