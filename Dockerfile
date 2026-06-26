@@ -34,14 +34,28 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
+    echo "=== Files with LoadModule mpm anywhere under /etc/apache2 ==="; \
+    grep -rlE 'LoadModule[[:space:]]+mpm_' /etc/apache2/ || echo "none"; \
+    echo "=== mods-available mpm files ==="; \
+    ls /etc/apache2/mods-available/ | grep -i mpm || echo "none"; \
+    echo "=== mods-enabled BEFORE ==="; \
+    ls /etc/apache2/mods-enabled/ | grep -i mpm || echo "none"; \
     rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf; \
-    ln -sf ../mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load; \
-    ln -sf ../mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf; \
+    # Comment out any rogue LoadModule mpm_* that lives outside mods-enabled
+    for f in $(grep -rlE 'LoadModule[[:space:]]+mpm_' /etc/apache2/ 2>/dev/null | grep -v mods-available || true); do \
+        echo "Patching rogue MPM load in $f"; \
+        sed -ri 's!^([[:space:]]*LoadModule[[:space:]]+mpm_.*)$!# \1!' "$f"; \
+    done; \
+    # Enable whichever MPM is actually available
+    if [ -f /etc/apache2/mods-available/mpm_prefork.load ]; then a2enmod mpm_prefork; \
+    elif [ -f /etc/apache2/mods-available/mpm_event.load ];   then a2enmod mpm_event;   \
+    elif [ -f /etc/apache2/mods-available/mpm_worker.load ];  then a2enmod mpm_worker;  \
+    fi; \
     a2enmod rewrite headers; \
-    echo "=== mods-enabled MPM state ==="; \
-    ls -la /etc/apache2/mods-enabled/ | grep -i mpm || true; \
-    echo "=== LoadModule mpm directives in /etc/apache2 ==="; \
-    grep -rE '^[[:space:]]*LoadModule[[:space:]]+mpm' /etc/apache2/ || true
+    echo "=== mods-enabled AFTER ==="; \
+    ls /etc/apache2/mods-enabled/ | grep -i mpm || echo "none"; \
+    echo "=== apache2 -V ==="; \
+    apache2 -V 2>&1 | grep -iE 'MPM|Server' || true
 
 # Document root -> public/, Apache listens on $PORT (Railway provides it)
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
