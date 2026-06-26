@@ -33,7 +33,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         pdo pdo_sqlite gd zip bcmath intl opcache \
     && rm -rf /var/lib/apt/lists/*
 
-RUN a2dismod mpm_event mpm_worker 2>/dev/null || true \
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf \
     && a2enmod mpm_prefork rewrite headers
 
 # Document root -> public/, Apache listens on $PORT (Railway provides it)
