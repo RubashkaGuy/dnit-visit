@@ -21,8 +21,8 @@ RUN composer install \
     --no-progress \
     --ignore-platform-reqs
 
-# ---------- Stage 3: runtime (PHP 8.3 + Apache) ----------
-FROM php:8.3-apache
+# ---------- Stage 3: runtime (PHP 8.4 + Apache) ----------
+FROM php:8.4-apache
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         libpng-dev libjpeg-dev libfreetype6-dev \
