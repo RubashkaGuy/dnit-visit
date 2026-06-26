@@ -33,8 +33,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         pdo pdo_sqlite gd zip bcmath intl opcache \
     && rm -rf /var/lib/apt/lists/*
 
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf \
-    && a2enmod mpm_prefork rewrite headers
+RUN set -eux; \
+    rm -f /etc/apache2/mods-enabled/mpm_*.load /etc/apache2/mods-enabled/mpm_*.conf; \
+    ln -sf ../mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load; \
+    ln -sf ../mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf; \
+    a2enmod rewrite headers; \
+    echo "=== mods-enabled MPM state ==="; \
+    ls -la /etc/apache2/mods-enabled/ | grep -i mpm || true; \
+    echo "=== LoadModule mpm directives in /etc/apache2 ==="; \
+    grep -rE '^[[:space:]]*LoadModule[[:space:]]+mpm' /etc/apache2/ || true
 
 # Document root -> public/, Apache listens on $PORT (Railway provides it)
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
