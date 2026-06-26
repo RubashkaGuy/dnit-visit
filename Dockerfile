@@ -18,7 +18,8 @@ RUN composer install \
     --prefer-dist \
     --optimize-autoloader \
     --no-interaction \
-    --no-progress
+    --no-progress \
+    --ignore-platform-reqs
 
 # ---------- Stage 3: runtime (PHP 8.3 + Apache) ----------
 FROM php:8.3-apache
